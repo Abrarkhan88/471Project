@@ -1,0 +1,2 @@
+# 471Project
+Django project
