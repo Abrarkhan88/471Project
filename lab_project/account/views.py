@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.models import User, auth
+from django.http import HttpResponse
 
 # Create your views here.
 
@@ -14,17 +15,22 @@ def signup(request):
         password = request.POST['password']
         confirmpassword = request.POST['confirmpassword']
 
-        user = User.objects.create_user(first_name = first_name, last_name = last_name, email = email, username = username, password = password)
-        user.save()
-        print("user created")
-
-        return redirect('/')
-    else:
+        if password == confirmpassword:
+            if User.objects.filter(username = username).exists():
+                print("Username already taken.")
+            elif User.objects.filter(email = email).exists():
+                print("Email is already in use.")
+            else:
+                user = User.objects.create_user(first_name = first_name, last_name = last_name, email = email, username = username, password = password)
+                user.save()
+                print("user created")
+                
+                return redirect('/')
+        else:
+            print("Passwords not matching")
+        
         return render(request, "signup.html")
 
-# def login(request):
-#     if request.method != "POST":
-#         return render(request, 'login.html')
 def login(request):
     if request.method == "POST":
         email = request.POST['email']
@@ -39,4 +45,3 @@ def login(request):
             messages.info(request, "invalid credentials")
     else:
         return render(request, "login.html")
-    
