@@ -7,7 +7,7 @@ def shop_list(request):
     return render(request, 'shop_list.html', {'shops': shops})
 
 def index(request):
-    return render(request, 'ecomapp/index.html')
+    return render(request, 'index.html')
 
 def login_view(request):
     return render(request, 'ecomapp/login.html')
