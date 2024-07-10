@@ -48,8 +48,7 @@ def login(request):
             return redirect('/')
         else:
             messages.info(request, "invalid credentials")
-            #return redirect("login")
-            return render(request, "signup.html")
+            return redirect("login")
     else:
         return render(request, "login.html")
 
