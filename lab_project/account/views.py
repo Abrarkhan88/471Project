@@ -18,8 +18,10 @@ def signup(request):
         if password == confirmpassword:
             if User.objects.filter(username = username).exists():
                 print("Username already taken.")
+                return redirect('signup')
             elif User.objects.filter(email = email).exists():
                 print("Email is already in use.")
+                return redirect('signup')
             else:
                 user = User.objects.create_user(first_name = first_name, last_name = last_name, email = email, username = username, password = password)
                 user.save()
@@ -28,20 +30,29 @@ def signup(request):
                 return redirect('/')
         else:
             print("Passwords not matching")
+            return redirect('signup')
         
+    else:
         return render(request, "signup.html")
 
 def login(request):
     if request.method == "POST":
-        email = request.POST['email']
+        username = request.POST['username']
         password = request.POST['password']
 
-        user = auth.authenticate(email = email, password = password)
+        user = auth.authenticate(username = username, password = password)
 
         if user is not None:
             auth.login(request, user)
-            return redirect("/")
+            print("Login Sucessfull")
+            return redirect('/')
         else:
             messages.info(request, "invalid credentials")
+            #return redirect("login")
+            return render(request, "signup.html")
     else:
         return render(request, "login.html")
+
+def logout(request):
+    auth.logout(request)
+    return redirect("/")
