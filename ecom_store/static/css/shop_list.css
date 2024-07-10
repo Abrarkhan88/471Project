@@ -1,0 +1,75 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to right, #ff7e5f, #feb47b);
+    color: #fff;
+}
+
+.navbar {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 1em 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.navbar a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 1em;
+    padding: 0.5em 1em;
+    border-radius: 25px;
+    transition: background 0.3s;
+}
+
+.navbar a:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.shop-list-container {
+    margin-top: 100px; /* Adjust for the fixed navbar height */
+    padding: 2em;
+    text-align: center;
+}
+
+h2 {
+    margin-bottom: 1em;
+}
+
+.shop-card {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 15px;
+    padding: 1.5em;
+    margin: 1em 0;
+}
+
+h3 {
+    margin: 0.5em 0;
+}
+
+p {
+    font-size: 1em;
+    margin: 1em 0;
+}
+
+.btn {
+    background: #ff7e5f;
+    border: none;
+    padding: 0.5em 1em;
+    color: #fff;
+    font-size: 1em;
+    cursor: pointer;
+    border-radius: 25px;
+    transition: background 0.3s;
+    text-decoration: none; /* Ensure the link style is removed */
+    display: inline-block; /* Ensure the anchor behaves like a button */
+}
+
+.btn:hover {
+    background: #feb47b;
+}
