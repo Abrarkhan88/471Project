@@ -20,9 +20,15 @@
         {% endif %}
     </div>
     <div class="container">
+        {% if user.is_authenticated %}
         <h1>Welcome to Our Ecommerce Store</h1>
         <p>Shop the best products at the best prices.</p>
-        <a href="login.html" class="btn">Login to Start Shopping</a>
+        {% else %}
+        <h1>Welcome to Our Ecommerce Store</h1>
+        <p>Shop the best products at the best prices.</p>
+        <a href="{% url 'login' %}" class="btn">Login to Start Shopping</a>
+        {% endif %}
+
     </div>
 </body>
 </html>
