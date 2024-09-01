@@ -1,68 +1,172 @@
-body {
-    font-family: Arial, sans-serif;
+* {
     margin: 0;
     padding: 0;
-    background: linear-gradient(to right, #ff7e5f, #feb47b);
-    color: #fff;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+    width: 100%;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-flow: row wrap;
+    padding: 1.75rem 1rem;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+nav a {
+    text-decoration: none;
+    padding: 0.5em;
+    color: black;
+    font-weight: bold;
+}
+
+nav a:hover {
+    background-color: black;
+    color: white;
+}
+
+.category-nav {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 50px;
+    padding-left: 140px;
+    position: relative;
+}
+
+.category-nav a {
+    padding: 0.5em 1em;
+    border: 3px solid black;
+}
+
+.icons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.icons a:hover {
+    background-color: black;
+    color: white;
+}
+
+.dropdown-content {
+    display: none;
+    position: relative; 
+    top: 28px;
+    background-color: white;
+    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.5);
+}
+
+.dropdown-content a {
+    width: 100%;
+    white-space: nowrap;
+    border: none;
+    padding: 1em;
+}
+
+.category-dropdown {
+    position: relative;
+}
+
+.category-dropdown .dropdown-content {
+    width: 10vw;
+}
+
+.category-dropdown:hover .dropdown-content {
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
-    height: 100vh;
+    align-items: flex-start;
+    position: absolute;
 }
 
-.navbar {
-    width: 100%;
+.user-icon {
+    position: relative;
+}
+
+.user-icon a {
+    padding: 0.7em;
+}
+
+.user-icon:hover .dropdown-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    position: absolute;
+    right: 0;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.slideshow {
     display: flex;
     justify-content: center;
-    background: rgba(0, 0, 0, 0.3);
-    padding: 1em 0;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 1000;
+    align-items: center;
+    padding: 12em 1em;
+    background-color: gray;
+    width: 100%;
 }
 
-.navbar a {
-    color: #fff;
-    text-decoration: none;
-    margin: 0 1em;
-    padding: 0.5em 1em;
-    border-radius: 25px;
-    transition: background 0.3s;
+
+.product-header {
+    padding-top: 4em;
 }
 
-.navbar a:hover {
-    background: rgba(255, 255, 255, 0.3);
+.products {
+    padding: 2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.container {
+.products ul {
+    list-style-type: none;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 3em 0;
+}
+
+.products li {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    background-color: wheat;
+    padding: 5em;
+}
+
+/* HOVER TRANSITION */
+.products li:hover {
+    background-color: gray;
+    color: whitesmoke;
+    transform: scale(120%, 120%);
+    transition-property: background-color, transform;
+    transition-duration: 0.5s;
+}
+
+footer {
+    background-color: black;
+    color: white;
+    width: 100%;
+    padding: 0.5em;
+    bottom: 0;
     text-align: center;
-    margin-top: 100px; /* Adjust for the fixed navbar height */
-}
-
-h1 {
-    margin-bottom: 0.5em;
-}
-
-p {
-    font-size: 1.2em;
-    margin-bottom: 1em;
-}
-
-.btn {
-    background: #ff7e5f;
-    border: none;
-    padding: 0.5em 1em;
-    color: #fff;
-    font-size: 1em;
-    cursor: pointer;
-    border-radius: 25px;
-    transition: background 0.3s;
-    text-decoration: none; /* Ensure the link style is removed */
-    display: inline-block; /* Ensure the anchor behaves like a button */
-}
-
-.btn:hover {
-    background: #feb47b;
 }

@@ -10,7 +10,7 @@ def signup(request):
         first_name = request.POST['first_name']
         last_name = request.POST['last_name']
         email = request.POST['email']
-        #mobileno = request.POST['mobileno']
+        mobileno = request.POST['mobileno']
         username = request.POST['username']
         password = request.POST['password']
         confirmpassword = request.POST['confirmpassword']
@@ -48,8 +48,7 @@ def login(request):
             return redirect('/')
         else:
             messages.info(request, "invalid credentials")
-            #return redirect("login")
-            return render(request, "signup.html")
+            return redirect("login")
     else:
         return render(request, "login.html")
 
