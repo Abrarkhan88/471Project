@@ -2,46 +2,25 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background: linear-gradient(to right, #ff7e5f, #feb47b);
-    color: #fff;
+    /* background: #fbf9ea;
+    color: #572c2cfa; */
+    background: #fff;
+    color: #222;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh;
-}
-
-.navbar {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    background: rgba(0, 0, 0, 0.3);
-    padding: 1em 0;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 1000;
-}
-
-.navbar a {
-    color: #fff;
-    text-decoration: none;
-    margin: 0 1em;
-    padding: 0.5em 1em;
-    border-radius: 25px;
-    transition: background 0.3s;
-}
-
-.navbar a:hover {
-    background: rgba(255, 255, 255, 0.3);
+    height: 85vh;
 }
 
 .login-container {
     text-align: center;
     margin-top: 100px; /* Adjust for the fixed navbar height */
-    background: rgba(0, 0, 0, 0.3);
-    padding: 2em;
-    border-radius: 15px;
+    background: #fff;
+    padding: 3em 3em;
+    border-radius: 0;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+    color: #222;
 }
 
 h2 {
@@ -52,25 +31,51 @@ h2 {
     margin-bottom: 1em;
 }
 
-.form-group label {
-    display: block;
-    margin-bottom: 0.5em;
-}
-
 .form-group input {
+    margin-top: 1em;
     width: 100%;
     padding: 0.5em;
-    border-radius: 5px;
     border: none;
+    border-bottom: 1px solid #222;
+    outline: none;
+}
+
+.signup-prompt {
+    color: #222;
+    /*padding: 1em 1em;*/
+}
+
+.signup-prompt p {
+    color:#222;
+    margin-top: 2em;
+    margin-bottom: 0;
+}
+.signup-prompt a {
+    color:#222;
+}
+
+.footer {
+    color: #222;
+    width: 100%;
+    padding: 0 0;
+    position: fixed;
+    bottom: 0;
+    text-align: center;
 }
 
 .btn {
-    background: #ff7e5f;
+    background: #222;
     border: none;
     padding: 0.5em 1em;
-    color: #fff;
+    color: #fbf9ea;
     font-size: 1em;
     cursor: pointer;
-    border-radius: 25px;
+    border-radius: 0;
     transition: background 0.3s;
-    text-decoration: none; /* Ensure the link style is
+    text-decoration: none; /* Ensure the link style is*/
+    margin-top: 1em;
+}
+
+.btn:hover {
+    background: #555;
+}

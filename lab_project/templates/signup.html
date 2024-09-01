@@ -1,29 +1,22 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
-{% load static %}
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Signup - Ecommerce</title>
-    <link rel="stylesheet" href="{% static 'css/signup.css'%}">
+    <link rel="stylesheet" href="{% static 'css/signup.css' %}">
 </head>
 <body>
-    <div class="navbar">
-        <a href="{% url 'index'%}">Home</a>
-        <a href="shop_list.html">Shop</a>
-        <a href="{% url 'login'%}">Login</a>
-        <a href="{% url 'signup'%}">Signup</a>
-    </div>
     <div class="signup-container">
         <h2>Sign Up</h2>
-        <form action="signup" method="POST">
-            
+        <form action="#" method="POST">
             {% csrf_token %}
             
             <div class="form-group">
                 <input type="text" id="first_name" name="first_name" placeholder = "First Name" required>
-            </div>
-            <div class="form-group">
                 <input type="text" id="last_name" name="last_name" placeholder = "Last Name" required>
             </div>
             <div class="form-group">
@@ -31,6 +24,9 @@
             </div>
             <div class="form-group">
                 <input type="text" id="username" name="username" placeholder = "Username" required>
+            </div>
+            <div class="form-group">
+                <input type="text" id="mobileno" name="mobileno" placeholder = "Mobile No." required>
             </div>
             <div class="form-group">
                 <input type="password" id="password" name="password" placeholder = "Password" required>
@@ -41,6 +37,12 @@
             
             <button type="submit" class="btn">Sign Up</button>
         </form>
+        <div class = "login-prompt">
+            <p>Already have an account? <a href = "#">Log In</a></p>
+        </div>
+    </div>
+    <div class = "footer">
+        <p>© All Rights Reserved | CSE471 Summer 2024 Section 4 Group 9</p>
     </div>
 </body>
 </html>

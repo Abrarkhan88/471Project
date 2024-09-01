@@ -1,34 +1,121 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
-{% load static %}
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home - Ecommerce</title>
-    <link rel="stylesheet" href="{% static 'css/index.css'%}">
+    <title>Home | Online Clothing Brand</title>
+    
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    
+    <script src="https://kit.fontawesome.com/929aba3781.js" crossorigin="anonymous"></script>
 </head>
+
 <body>
-    <div class="navbar">
-        <a href="{% url 'index' %}">Home</a>
-        <a href="shop_list.html">Shop</a>
+    <nav>
+        <div class = "menu-bar" title = "Sidebar">
+            <a link = "#"><i class="fa-solid fa-bars"></i></a>
+        </div>
+        <div class = "category-nav">
+            <div class = "category-dropdown">
+                <a href="#">MEN</a>
+                <div class = "dropdown-content">
+                    <a href = "#">T-Shirts</a>
+                    <a href = "#">Shirts</a>
+                    <a href = "#">Pants</a>
+                    <a href = "#">Panjabi</a>
+                    <a href = "#">Shoes</a>
+                </div>
+            </div>
+            
+            <div class = "category-dropdown">
+                <a href="#">WOMEN</a>
+                <div class = "dropdown-content">
+                    <a href = "#">Cloth 1</a>
+                    <a href = "#">Cloth 2</a>
+                    <a href = "#">Shoes</a>
+                </div>
+            </div>
 
-        {% if user.is_authenticated %}
-        <a href = "{% url 'logout' %}">Logout</a>
-        {% else %}
-        <a href="{% url 'login' %}">Login</a>
-        <a href="{% url 'signup' %}">Signup</a>
-        {% endif %}
-    </div>
-    <div class="container">
-        {% if user.is_authenticated %}
-        <h1>Welcome to Our Ecommerce Store</h1>
-        <p>Shop the best products at the best prices.</p>
-        {% else %}
-        <h1>Welcome to Our Ecommerce Store</h1>
-        <p>Shop the best products at the best prices.</p>
-        <a href="{% url 'login' %}" class="btn">Login to Start Shopping</a>
-        {% endif %}
+            <div class = "category-dropdown">
+                <a href = "#">KIDS</a>
+                <div class = "dropdown-content">
+                    <a href = "#">T-Shirt</a>
+                    <a href = "#">Shirt</a>
+                    <a href = "#">Pant</a>
+                    <a href = "#">Three Piece</a>
+                    <a href = "#">Shoes</a>
+                </div>
+            </div>
 
-    </div>
+            <div class = "category-dropdown">
+                <a href = "#">ACCESSORIES</a>
+            </div>
+        </div>
+        
+        <div class = "icons">
+            <a href="#" title = "Search"><i class="fa-solid fa-magnifying-glass"></i></a>
+            
+            <div class = "user-icon">
+                <a href="#" class = "user-icon" title = "Account"><i class="fas fa-user"></i></a>
+                <div class = "dropdown-content">
+                    <a href = "account/login">Log In</a>
+                    <a href = "account/signup">Create an account</a>
+                </div>
+            </div>
+            
+            <a href = "#" title = "My Cart"><i class="fa-solid fa-bag-shopping"></i></a>
+        </div>
+    </nav>
+    
+    <main>
+        <div class = "slideshow">
+            <h1>Slideshow</h1>
+        </div>
+
+        <div class = "product-header">
+            <h1>Products</h1>
+        </div>
+
+        <div class = "products">
+            <ul>
+                <li>
+                    <div><p>Men's Shirt Image</p></div>
+                    <div><h3>Men's Shirt</h3></div>
+                    <div><h5>Price</h5></div>
+                </li>
+                <li>
+                    <div><p>Women's Kurti Image</p></div>
+                    <div><h3>Women's Shirt</h3></div>
+                    <div><h5>Price</h5></div>
+                </li>
+                <li>
+                    <div><p>Men's Pant Image</p></div>
+                    <div><h3>Men's Pant</h3></div>
+                    <div><h5>Price</h5></div>
+                </li>
+                <li>
+                    <div><p>Men's Shoes Image</p></div>
+                    <div><h3>Men's Shoes</h3></div>
+                    <div><h5>Price</h5></div>
+                </li>
+                <li>
+                    <div><p>Women's Shoes Image</p></div>
+                    <div><h3>Women's Shoes</h3></div>
+                    <div><h5>Price</h5></div>
+                </li>
+                <li>
+                    <div><p>Men's Tie Image</p></div>
+                    <div><h3>Men's Tie</h3></div>
+                    <div><h5>Price</h5></div>
+                </li>
+            </ul>
+        </div>
+    </main>
+
+    <footer>
+        <p>© All Rights Reserved | CSE471 Summer 2024 Section 4 Group 9</p>
+    </footer>
 </body>
 </html>
