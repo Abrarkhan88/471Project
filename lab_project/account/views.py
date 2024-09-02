@@ -10,6 +10,7 @@ def signup(request):
         first_name = request.POST['first_name']
         last_name = request.POST['last_name']
         email = request.POST['email']
+        mobileno = request.POST['mobileno']
         username = request.POST['username']
         password = request.POST['password']
         confirmpassword = request.POST['confirmpassword']
