@@ -72,7 +72,7 @@ def link_send(request):
 
 def send_email(email, link):
     sub = "Please Verify | CSE471 Lab Project Summer 2024"
-    msg = f"Please click on the link to verify your account http://127.0.0.1:8000/verify/{link}"
+    msg = f"Please click on the link to verify your account http://127.0.0.1:8000/account/verify/{link}"
     email_from = settings.EMAIL_HOST_USER
     email_to = [email]
     send_mail(sub, msg, email_from, email_to)
@@ -87,7 +87,7 @@ def verify(request, verf_link):
 
         return render(request, "verified.html")
     else:
-        return redirect('verf_error')
+        return redirect(request, 'verf_error')
     
 def verf_error(request):
-    return render("verf_error.html")
+    return render(request, "verf_error.html")

@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'account',
     'ecomm.apps.EcommConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -40,7 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'account'
+    'django.contrib.sites',
 ]
 
 MIDDLEWARE = [
@@ -80,9 +81,9 @@ WSGI_APPLICATION = 'lab_project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'Lab_Project_2',
+        'NAME': 'CSE471_Lab_Project',
         'USER': 'postgres',
-        'PASSWORD': '1234',
+        'PASSWORD': 'aBrar395788',
         'HOST': 'localhost'
     }
 }
@@ -123,6 +124,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = '/static/'
+SITE_ID = 1
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
@@ -132,16 +134,15 @@ STATICFILES_DIRS = [
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-AUTH_USER_MODEL = 'account.CustomUser'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'fahmid267@gmail.com'
+EMAIL_HOST_PASSWORD = 'rzchgzklhiasxtij'
 
+AUTH_USER_MODEL = 'account.CustomUser'
 AUTHENTICATION_BACKENDS = [
     'account.backends.EmailBackend',
     'django.contrib.auth.backends.ModelBackend',
 ]
-
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_USE_TLS = True
-EMAIL_PORT = 587
-EMAIL_HOST_USER = 'fahmid267@gmail.com'
-EMAIL_HOST_PASSWORD = 'rzch gzkl hias xtij'
