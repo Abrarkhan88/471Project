@@ -60,6 +60,11 @@
             <div class = "user-icon">
                 <a href="#" class = "user-icon" title = "Account"><i class="fas fa-user"></i></a>
                 <div class = "dropdown-content">
+                    {% if user.is_authenticated %}
+                    <a href = "#">My Profile</a>
+                    <a href = "account/logout">Log Out</a>
+                    {% endif %}
+
                     <a href = "account/login">Log In</a>
                     <a href = "account/signup">Create an account</a>
                 </div>
