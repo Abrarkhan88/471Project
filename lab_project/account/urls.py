@@ -9,5 +9,6 @@ urlpatterns = [
     path('link_send/', views.link_send, name='link_send'),
     path('verify/<verf_link>', views.verify, name="verify"),
     # path('verified', views.)
-    path('verf_error', views.verf_error, name = "verf_error")
+    path('verf_error', views.verf_error, name = "verf_error"),
+    path('update_profile', views.updateProfile, name = "update_profile"),
 ]

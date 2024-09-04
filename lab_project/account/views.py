@@ -91,3 +91,16 @@ def verify(request, verf_link):
     
 def verf_error(request):
     return render(request, "verf_error.html")
+
+
+def updateProfile(request):
+    if request.method == "POST":
+        user = User.objects.get(username = request.user.username)
+        user.username = request.POST['username']
+        user.first_name = request.POST['first_name']
+        user.last_name = request.POST['last_name']
+        user.email = request.POST['email']
+        user.save()
+        return redirect('/')
+    else:
+        return render(request, "update_profile.html")
