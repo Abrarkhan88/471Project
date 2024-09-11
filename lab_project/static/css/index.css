@@ -308,6 +308,15 @@ body {
     margin: auto;
 }
 
+.product a:visited {
+    background-color: var(--FONT-COLOR);
+}
+
+.product a {
+    text-decoration: none;
+    color: var(--FONT-COLOR);
+}
+
 figcaption {
     padding: 0.5rem;
     font-weight: bolder;

@@ -96,3 +96,17 @@ def password_reset(request):
 
 def my_profile(request):
     pass
+
+
+
+def updateProfile(request):
+    if request.method == "POST":
+        user = User.objects.get(username = request.user.username)
+        user.username = request.POST['username']
+        user.first_name = request.POST['first_name']
+        user.last_name = request.POST['last_name']
+        user.email = request.POST['email']
+        user.save()
+        return redirect('/')
+    else:
+        return render(request, "update_profile.html")
