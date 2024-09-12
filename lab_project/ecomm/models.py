@@ -8,3 +8,5 @@ class Product(models.Model):
     desc = models.TextField()
     price = models.IntegerField()
     offer = models.BooleanField(default = False)
+    category = models.TextField(max_length = 50)
+    type = models.TextField(max_length = 50)

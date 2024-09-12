@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'account',
-    'ecomm.apps.EcommConfig'
+    'ecomm.apps.EcommConfig',
+    'shopping_cart',
 ]
 
 MIDDLEWARE = [
@@ -82,7 +83,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'CSE471_Lab_Project',
         'USER': 'postgres',
-        'PASSWORD': '1234',
+        'PASSWORD': 'aBrar395788',
         'HOST': 'localhost'
     }
 }

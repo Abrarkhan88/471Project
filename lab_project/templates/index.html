@@ -146,6 +146,7 @@
                         <div class = "dropdown-grid">
                             <div class = "content-group">
                                 <div><a href = "#" class = "content-group-header">Tops</a></div>
+                                <div><a href = "#" class = "content-name-drop">Casual Tops</a></div>
                             </div>
                         </div>
                     </div>
@@ -315,7 +316,14 @@
                 </div>
             </div>
             
-            <a href = "#" title = "My Cart"><i class="fa-solid fa-bag-shopping"></i></a>
+            <a href="{% url 'view_cart' %}" title="My Cart">
+                <i class="fa-solid fa-bag-shopping"></i>
+                {% if user.is_authenticated %}
+                    {% with cart=user.cart %}
+                        <span class="cart-count">{{ cart.items.count }}</span>
+                    {% endwith %}
+                {% endif %}
+            </a>
         </div>
     </header>
     
@@ -352,8 +360,11 @@
                 
                 {% for prods in product %}
 
-                <div class = "product">
-                    <img src="{{prods.img.url}}"><figcaption>{{prods.name}}<br>BDT {{prods.price}}</figcaption>
+                <div class="product">
+                    <a href="{% url 'product_detail' prods.id %}">
+                        <img src="{{ prods.img.url }}" alt="{{ prods.name }}">
+                        <figcaption>{{ prods.name }}<br>BDT {{ prods.price }}</figcaption>
+                    </a>
                 </div>
 
                 {% endfor %}
