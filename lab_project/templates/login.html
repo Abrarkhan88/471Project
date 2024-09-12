@@ -28,12 +28,16 @@
             <button type="submit" class="btn">Login</button>
         </form>
 
-        <div class = "password-prompt">
+        {% comment %} <div class = "password-prompt">
             <a href="password_reset">Forgot Password?</a>
-        </div>
+        </div> {% endcomment %}
 
         <div class = "signup-prompt">
             <p>Don't have an account? <a href = "signup">Sign up</a></p>
+        </div>
+        <div >
+            <p>Forgot your password? <a href = "password_reset">password_reset</a></p>
+            <a herf="{% url 'password_reset' %}">forgot password?</a>
         </div>
     </div>
 </main>
