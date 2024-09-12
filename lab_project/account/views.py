@@ -1,5 +1,4 @@
 from django.shortcuts import render, redirect
-from django.contrib import messages
 from django.contrib.auth.models import User, auth
 from django.http import HttpResponse
 from django.contrib.auth import get_user_model, authenticate, login, logout
@@ -92,7 +91,7 @@ def verify(request, verf_link):
         return render(request, "verf_error.html")
 
 def password_reset(request):
-    return render(request, "pass_reset.html")
+    return render(request, "resetPassword/passresetmail.html")
 
 def my_profile(request):
     pass
