@@ -27,7 +27,7 @@ def signup(request):
             if User.objects.filter(username = username).exists():
                 messages.info(request, "Username is already taken.")
                 return redirect('signup')
-            elif User.objects.filter(email = email).exists():
+            if User.objects.filter(email = email).exists():
                 messages.info(request, "Email is already taken.")
                 return redirect('signup')
             else:
@@ -37,8 +37,7 @@ def signup(request):
 
                 send_email(email, verf_link)
                 
-                return redirect('link_send')
-            # return redirect('verify_account')
+                return redirect('verify_account')
         else:
             messages.info(request, "Passwords do not match.")
             return redirect('signup')
@@ -55,7 +54,6 @@ def user_login(request):
 
         if user is not None:
             login(request, user)
-            # print("Login Successful")
             return redirect('/')
         else:
             messages.info(request, "Invalid email and password")
@@ -81,16 +79,24 @@ def verify(request, verf_link):
     user = User.objects.filter(verf_link = verf_link).first()
 
     if user:
-        user.email_verified = True
-        user.save()
-        messages.success(request, "Congratulations! Your account has been verified.")
+        if user.email_verified == True:
+            messages.info(request, "Your account is already verified")
+            return render(request, "login.html")
+        else:
+            user.email_verified = True
+            user.save()
+            # messages.success(request, "Congratulations! Your account has been verified.")
 
         return render(request, "verified.html")
     else:
-        return redirect(request, 'verf_error')
-    
-def verf_error(request):
-    return render(request, "verf_error.html")
+        return render(request, "verf_error.html")
+
+def password_reset(request):
+    return render(request, "pass_reset.html")
+
+def my_profile(request):
+    pass
+
 
 
 def updateProfile(request):
