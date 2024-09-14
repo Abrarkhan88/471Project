@@ -19,10 +19,11 @@
             {% for items in cart_items %}
 
             <div class = "prod-container">
-                <img src="{{items.img.url}}" alt="Men's Crew Neck Tshirt" width = "80" height = "80">
+                <img src="{{ items.product_img.url }}" alt="{{ items.product_name }}" width = "80" height = "80">
+                
                 <div class = "prod-name-price">
-                    <h3 class = "prod-name">{{items.name}}</h3>
-                    <h3 class = "prod-price">{{items.price}}</h3>
+                    <h3 class = "prod-name">{{items.product_name}}</h3>
+                    <h3 class = "prod-price">BDT {{items.price}}</h3>
                 </div>
             </div>
 
@@ -36,6 +37,26 @@
             {% endif %}
 
         </div>
+
+        <div class = "cart-dtl-container price-container">
+            <h3>Total</h3>
+
+            <div class = "calc">
+                <span class = "calc-line">
+                    <h4>Discount:</h4>
+                </span>
+
+                <span class = "calc-line"></span>
+                    <h4>Subtotal:</h4>
+                    <h4>Price</h4>
+                </span>
+            </div>
+
+            <div class = "checkout-sec">
+                <button class = "checkout-btn">Checkout</button>
+            </div>
+        </div>
+
     </main>
 
     {% endblock %}

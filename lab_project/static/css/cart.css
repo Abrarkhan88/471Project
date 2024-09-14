@@ -11,6 +11,10 @@ img {
     display: block;
 }
 
+button {
+    font-family: inherit;
+}
+
 
 /* VARIABLES */
 :root {
@@ -241,15 +245,17 @@ body {
 main {
     padding: 5rem;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
-    align-items: center;
+    align-items: start;
+    gap: 1rem;
 }
 
 .cart-dtl-container {
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
-    width: 70vw;
-    padding: 2rem;
+    width: 40vw;
+    height: auto;
+    padding: 1rem;
     text-align: center;
 }
 
@@ -261,6 +267,50 @@ main {
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    /* background-color: wheat; */
+    padding: 1rem;
+    margin: 1rem;
+    gap: 2rem;
+    border: 0.5px solid var(--FONT-COLOR);
+}
+
+.prod-container img {
+    width: 45px;
+    height: auto;
+}
+
+.prod-name-price {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* background-color: gray; */
+    width: 100%;
+}
+
+.price-container {
+    width: 25vw;
+}
+
+.price-container h3 {
+    border-bottom: 1px solid var(--FONT-COLOR);
+    margin-bottom: 1rem;
+}
+
+.price-container h4 {
+    padding: 10px 0;
+}
+
+.calc {
+    text-align: left;
+    padding: 0 1rem;
+}
+
+.checkout-btn {
+    background-color: var(--FONT-COLOR);
+    color: var(--BG-COLOR);
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    margin-top: 2rem;
 }
 
 .shop-link {
@@ -268,4 +318,26 @@ main {
     background-color: var(--FONT-COLOR);
     color: var(--BG-COLOR);
     padding: 0.5rem;
+}
+
+footer {
+    background-color: var(--FONT-COLOR);
+    color: var(--BG-COLOR);
+    width: 100%;
+    padding: 0.5em;
+    bottom: 0;
+    text-align: center;
+}
+
+.footer a {
+    text-decoration: none;
+    color: var(--BG-COLOR);
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    /* gap: 10rem; */
+    padding: 2rem;
 }
