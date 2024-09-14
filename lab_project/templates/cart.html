@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}My Cart{% endblock %}
+
+{% block link %}<link rel="stylesheet" href="{% static 'css/cart.css' %}">{% endblock %}
+
+
+<body>
+    
+    {% block content %}
+
+    <main>
+        <div class = "cart-dtl-container">
+
+            {% if cart_items %}
+
+            {% for items in cart_items %}
+
+            <div class = "prod-container">
+                <img src="{{items.img.url}}" alt="Men's Crew Neck Tshirt" width = "80" height = "80">
+                <div class = "prod-name-price">
+                    <h3 class = "prod-name">{{items.name}}</h3>
+                    <h3 class = "prod-price">{{items.price}}</h3>
+                </div>
+            </div>
+
+            {% endfor %}
+
+            {% else %}
+
+            <h4>Your cart is currently empty</h4>
+            <a href = "#" class = "shop-link">Shop Now</a>
+
+            {% endif %}
+
+        </div>
+    </main>
+
+    {% endblock %}
+    
+</body>
+</html>

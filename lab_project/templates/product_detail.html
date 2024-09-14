@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}{{ product.name }} | Online Clothing Brand{% endblock %}
+
+{% block link %}<link rel="stylesheet" href="{% static 'css/product_page_base.css' %}">{% endblock %}
+
+
+
+<body>
+
+    {% block accountnav %}
+    
+    <div><a href = "../../account/login">Log in</a></div>
+    <div><a href = "../../account/signup">Create an account</a></div>
+    
+    {% endblock%}
+    
+    {% block content %}
+
+    <main class = "product-main">
+        <div class = "product-block">
+            <div class = "product-img">
+                <img src="{{ product.img.url }}" alt="Polo T-Shirt" width = 100 height = 100>
+            </div>
+
+            <div class = "product-dtls">
+                <h4 class = "product-name">{{ product.name }}</h4>
+                <p class = "product-desc">{{ product.desc }}</p>
+                <h4 class = "product-price">BDT {{ product.price }}</h4>
+
+                <div class = "size-dtl">
+                    <h4 class = "product-size">Size</h4>
+
+                    <div class = "size-list">
+                        <div>
+                            <input class="radio-size" type="radio" id="size_s" name="size" value="S">
+                            <label for="size_s" class = "radio-label">S</label>
+                        </div>
+
+                        <div>
+                            <input class="radio-size" type="radio" id="size_m" name="size" value="M">
+                            <label for="size_m" class = "radio-label">M</label>
+                        </div>
+
+                        <div>
+                            <input class="radio-size" type="radio" id="size_l" name="size" value="L">
+                            <label for="size_l" class = "radio-label">L</label>
+                        </div>
+
+                        <div>
+                            <input class="radio-size" type="radio" id="size_xl" name="size" value="XL">
+                            <label for="size_xl" class = "radio-label">XL</label>
+                        </div>
+                    </div>
+                    
+                    <div class = "color-list">
+                        <div>
+                            <!-- <input class="color" type="radio" id="navy-blue" name="size" value="S"> -->
+                            <!-- <label for="size_s">S</label> -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class = "cart-add-option">
+                    <a href =  "{% url 'add_to_cart' product.id %}" class = "cart-add-link">Add to Cart</a>
+                </div>
+            </div>
+        </div>
+
+        <div class = "similar-block">
+            <h4 class = "block-header">Similar Products</h4>
+
+            <div class = "similar-prod-sec">
+
+                {% for prods in products %}
+
+                {% if prods.type == product.type  and prods.category == product.category and not prods.id == product.id %}
+
+                <a href="{% url 'product_detail' prods.id %}"><img src="{{ prods.img.url }}" width = 100 height = 100><figcaption>{{prods.name}}</figcaption>
+
+                {% endif %}
+
+                {% endfor %}
+
+            </div>
+        </div>
+    </main>
+
+    {% endblock %}
+
+</body>
+</html>
