@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}{{ product.category }} | Online Clothing Brand{% endblock %}
+
+{% block link %}<link rel="stylesheet" href="{% static 'css/index.css' %}">{% endblock %}
+
+
+<body>
+
+    {% block iconlinks %}
+
+    <div class = "icons">
+        <a href="#" title = "Search" class = "search-icon"><i class="fa-solid fa-magnifying-glass"></i></a>
+        
+        <div class = "user-icon">
+            <a href="#" class = "profile-icon" title = "Account"><i class="fas fa-user"></i></a>
+            <div class = "dropdown icon-dropdown">
+
+                {% if user.is_authenticated and not user.is_superuser %}
+                
+                <div><a href = "../../account/update_profile">My Profile</a></div>
+                <div><a href = "../../shopping_cart/view_cart">My Cart</a></div>
+                <div><a href = "../../account/logout">Log Out</a></div>
+
+                {% else %}
+
+                <div><a href = "../../account/login">Log in</a></div>
+                <div><a href = "../../account/signup">Create an account</a></div>
+
+                {% endif %}
+
+            </div>
+        </div>
+
+        <a href = "../../shopping_cart/view_cart" title = "My Cart"><i class="fa-solid fa-bag-shopping"></i></a>
+    </div>
+
+    {% endblock %}
+
+    <main class = "main-all-prods">
+        <div class = "section sec-products"></div>
+            <div class = "sec-header">
+                <h1>{{ category }}</h1>
+            </div>
+    
+            <div class = "products">
+                
+                {% for prods in product %}
+
+                <div class = "product">
+                    <a href = "{% url 'product_detail' prods.id %}" class = "prod-link"><img src="{{prods.img.url}}"><figcaption>{{prods.name}}<br>BDT {{prods.price}}</figcaption></a>
+                </div>
+
+                {% endfor %}
+
+            </div>
+        </div>
+    </main>

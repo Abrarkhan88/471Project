@@ -56,43 +56,48 @@
                 <div class = "size-dtl">
                     <h4 class = "product-size">Size</h4>
 
-                    <div class = "size-list">
-                        <div>
-                            <input class="radio-size" type="radio" id="size_s" name="size" value="S">
-                            <label for="size_s" class = "radio-label">S</label>
+                    <form method = "POST" action = "{%url 'add_to_cart' product.id %}">
+
+                        {% csrf_token %}
+
+                        <div class = "size-list">
+                            <div>
+                                <input class="radio-size" type="radio" id="size_s" name="size" value="S" required>
+                                <label for="size_s" class = "radio-label">S</label>
+                            </div>
+    
+                            <div>
+                                <input class="radio-size" type="radio" id="size_m" name="size" value="M" required>
+                                <label for="size_m" class = "radio-label">M</label>
+                            </div>
+    
+                            <div>
+                                <input class="radio-size" type="radio" id="size_l" name="size" value="L" required>
+                                <label for="size_l" class = "radio-label">L</label>
+                            </div>
+    
+                            <div>
+                                <input class="radio-size" type="radio" id="size_xl" name="size" value="XL" required>
+                                <label for="size_xl" class = "radio-label">XL</label>
+                            </div>
                         </div>
 
-                        <div>
-                            <input class="radio-size" type="radio" id="size_m" name="size" value="M">
-                            <label for="size_m" class = "radio-label">M</label>
-                        </div>
+                        <div class = "cart-add-option">
+    
+                            {% if user.is_authenticated %}
+                            <button type = "submit" class = "cart-add-link">Add to Cart</button>
 
-                        <div>
-                            <input class="radio-size" type="radio" id="size_l" name="size" value="L">
-                            <label for="size_l" class = "radio-label">L</label>
-                        </div>
+                            {% for msg in messages %}
+                            <h3 class = "cart-add-msg">{{msg}}</h3>
+                            {% endfor %}
+                            
+                            {% else %}
+                            <a href =  "../../account/login" class = "cart-add-link">Add to Cart</a>
+                            
+                            {% endif %}
 
-                        <div>
-                            <input class="radio-size" type="radio" id="size_xl" name="size" value="XL">
-                            <label for="size_xl" class = "radio-label">XL</label>
                         </div>
-                    </div>
-                    
-                    <div class = "color-list">
-                        <div>
-                            <!-- <input class="color" type="radio" id="navy-blue" name="size" value="S"> -->
-                            <!-- <label for="size_s">S</label> -->
-                        </div>
-                    </div>
-                </div>
-
-                <div class = "cart-add-option">
-
-                    {% if user.is_authenticated %}
-                    <a href =  "{% url 'add_to_cart' product.id %}" class = "cart-add-link">Add to Cart</a>
-                    {% else %}
-                    <a href =  "../../account/login" class = "cart-add-link">Add to Cart</a>
-                    {% endif %}
+                    </form>
                 </div>
             </div>
         </div>

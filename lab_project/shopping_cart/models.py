@@ -16,6 +16,7 @@ class CartItem(models.Model):
     cart = models.ForeignKey(Cart, on_delete = models.CASCADE)
     product = models.ForeignKey(Product, on_delete = models.CASCADE)
     price = models.FloatField(default = 0)
-    quantity = models.IntegerField(default = 0)
+    quantity = models.PositiveIntegerField(default = 0)
     product_name = models.TextField(max_length = 100)
     product_img = models.ImageField()
+    product_size = models.TextField()

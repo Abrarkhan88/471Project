@@ -296,14 +296,33 @@ main {
 
 .cart-add-link {
     padding: 0.5rem 2rem;
+    margin-top: 2rem;
     background-color: var(--FONT-COLOR);
     color: var(--BG-COLOR);
     cursor: pointer;
+    text-decoration: none;
 }
 
 .product-img img {
     width: 400px;
     height: auto;
+}
+
+.cart-add-msg {
+    margin-top: 1rem;
+    animation: removeMessage 2s 1s ease-in-out forwards;
+}
+
+@keyframes removeMessage {
+    0% {
+        color: var(--FONT-COLOR);
+        display: block;
+    }
+
+    100% {
+        color: var(--BG-COLOR);
+        display: none;
+    }
 }
 
 .similar-block {

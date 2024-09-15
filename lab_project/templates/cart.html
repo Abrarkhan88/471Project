@@ -47,31 +47,39 @@
                 <h1>My Cart</h1>
             </div>
 
+            {% if cart_items %}
+
             <div class = "cart-prod-price">
                 <div class = "cart-dtl-container">
 
-                    {% if cart_items %}
-        
                     {% for items in cart_items %}
         
                     <div class = "prod-container">
-                        <button class = "remove-btn"><h4>&#8212;</h4></button>
+
+                        <form method = "POST" class = "add-sub-form" action = "{% url 'update_cart' items.id %}">
+                            
+                            {% csrf_token %}
+
+                            <div class = "add-sub-form-div">
+                                <button type = "number" step = "1" class = "add-sub-btn" name = "qty-add" value = "{{ items.quantity }">+</button>
+                                <button type = "number" step = "1" class = "add-sub-btn" name = "qty-sub" value = "{{ items.quantity }}">-</button>
+                            </div>
+                        </form>
+                        
+                        
                         <img src="{{ items.product_img.url }}" alt="{{ items.product_name }}" width = "80" height = "80">
                         
                         <div class = "prod-name-price">
-                            <h3 class = "prod-name">{{items.product_name}}</h3>
+                            <div class = "prod-name-size">
+                                <h3 class = "prod-name">{{items.product_name}}</h3>
+                                <h3 class = "prod-size">{{items.product_size}}</h3>
+                                <h3 class = "prod-qty">x{{items.quantity}}</h3>
+                            </div>
                             <h3 class = "prod-price">BDT {{items.price}}</h3>
                         </div>
                     </div>
         
                     {% endfor %}
-        
-                    {% else %}
-        
-                    <h4>Your cart is currently empty</h4>
-                    <a href = "#" class = "shop-link">Shop Now</a>
-        
-                    {% endif %}
         
                 </div>
         
@@ -85,17 +93,30 @@
         
                         <span class = "calc-line"></span>
                             <h4>Subtotal:</h4>
-                            <h4>Total: {{cart.total_price}}</h4>
+                            <h4>Total: BDT {{cart.total_price}}</h4>
                         </span>
                     </div>
         
-                    <div class = "checkout-sec">
+                    <!-- <div class = "checkout-sec">
+                        <button class = "checkout-btn">Checkout</button>
+                    </div> -->
+
+                    <div class = "checkout-sec"></div>
                         <a href="{% url 'download_invoice' %}">
                             <button class = "checkout-btn">Checkout</button>
                         </a>
                     </div>
                 </div>
             </div>
+
+            {% else %}
+
+            <div class = "empty-container">
+                <h4>Your cart is currently empty</h4>
+                <a href = "/" class = "shop-link">Shop Now</a>
+            </div>
+
+            {% endif %}
 
     </main>
 
