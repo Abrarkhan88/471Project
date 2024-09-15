@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Product, Cart, CartItem
 from django.contrib.auth.decorators import login_required
@@ -105,3 +106,17 @@ def download_invoice(request):
         return response
     else:
         return HttpResponse('Error generating PDF')
+=======
+from django.shortcuts import render, get_object_or_404
+# from .models import Product
+
+# Create your views here.
+
+def view_cart(request):
+    return render(request, "cart.html")
+
+# def add_to_cart(request, product_id):
+#     product = get_object_or_404(Product, id = product_id)
+
+#     prod_exist = 
+>>>>>>> Stashed changes

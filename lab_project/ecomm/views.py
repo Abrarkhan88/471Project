@@ -15,6 +15,7 @@ def product_detail(request, product_id):
     product = get_object_or_404(Product, id=product_id)
     products = Product.objects.filter(type = product.type)
     
+<<<<<<< Updated upstream
     return render(request, "product_detail.html", {"product": product, "products": products})
 
 def product_from_cat(request, category):
@@ -26,3 +27,6 @@ def product_from_cat(request, category):
         # return render(request, "all_prods_template.html", {"product" : product, "type": category})
 
     return render(request, "all_prods_template.html", {"product" : product, "category" : category})
+=======
+    return render(request, "product_detail.html", {"product": product, "products": products})
+>>>>>>> Stashed changes
