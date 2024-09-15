@@ -262,6 +262,10 @@ main {
     text-align: center;
 }
 
+.section a:hover {
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
 .sec-header {
     border-bottom: var(--HEADER-BORDER);
     display: inline-block;
@@ -355,6 +359,7 @@ main {
     padding: 0 1rem;
 }
 
+
 .checkout-btn {
     background-color: var(--FONT-COLOR);
     color: var(--BG-COLOR);
@@ -362,6 +367,8 @@ main {
     font-size: 1rem;
     margin-top: 2rem;
 }
+
+
 
 .empty-container {
     width: 70vw;
