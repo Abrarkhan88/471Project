@@ -1,5 +1,4 @@
 from django.db import models
-<<<<<<< Updated upstream
 from django.conf import settings
 from ecomm.models import Product
 from django.contrib.auth import get_user_model
@@ -21,7 +20,3 @@ class CartItem(models.Model):
     product_name = models.TextField(max_length = 100)
     product_img = models.ImageField()
     product_size = models.TextField()
-=======
-
-# Create your models here.
->>>>>>> Stashed changes

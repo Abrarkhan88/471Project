@@ -1,4 +1,3 @@
-<<<<<<< Updated upstream
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Product, Cart, CartItem
 from django.contrib.auth.decorators import login_required
@@ -7,6 +6,7 @@ from django.http import HttpResponse
 from django.template.loader import render_to_string
 from io import BytesIO
 from xhtml2pdf import pisa
+from .models import Cart, CartItem
 
 # Create your views here.
 
@@ -38,7 +38,7 @@ def add_to_cart(request, product_id):
 @login_required
 def view_cart(request):
     user = request.user
-    cart = Cart.objects.get(user = user)
+    cart, created = Cart.objects.get_or_create(user = user)
     cart_items = CartItem.objects.filter(cart = cart)
 
     return render(request, 'cart.html', {"cart_items" : cart_items, "cart" : cart})
@@ -77,46 +77,38 @@ def update_cart(request, item_id):
     return redirect('view_cart')
 
 def download_invoice(request):
-    cart = Cart.objects.get(user=request.user)
+    try:
+        cart = Cart.objects.get(user=request.user)
+        cart_items = CartItem.objects.filter(cart=cart)
+        total_price = cart.total_price
 
+        # Log the retrieved items and price for debugging
+        print("Cart Items:", cart_items)
+        print("Total Price:", total_price)
 
-    cart_items = CartItem.objects.filter(cart=cart)
+        # Render the HTML for the invoice
+        html = render_to_string('invoice_template.html', {
+            'cart_items': cart_items,
+            'total_price': total_price,
+            'user': request.user,
+        })
 
+        # Generate PDF from the HTML
+        response = HttpResponse(content_type='application/pdf')
+        response['Content-Disposition'] = 'attachment; filename="invoice.pdf"'
 
-    total_price = cart.total_price
+        result = BytesIO()
+        pdf = pisa.pisaDocument(BytesIO(html.encode('UTF-8')), result)
 
+        if not pdf.err:
+            # Clear the cart items after the invoice is generated
+            cart_items.delete()  
+            cart.total_price = 0
+            cart.save()
 
-    html = render_to_string('invoice_template.html', {
-        'cart_items': cart_items,
-        'total_price': total_price,
-        'user': request.user,
-    })
-
-
-    response = HttpResponse(content_type='application/pdf')
-    response['Content-Disposition'] = 'attachment; filename="invoice.pdf"'
-
-
-    result = BytesIO()
-    pdf = pisa.pisaDocument(BytesIO(html.encode('UTF-8')), result)
-
-
-    if not pdf.err:
-        response.write(result.getvalue())
-        return response
-    else:
-        return HttpResponse('Error generating PDF')
-=======
-from django.shortcuts import render, get_object_or_404
-# from .models import Product
-
-# Create your views here.
-
-def view_cart(request):
-    return render(request, "cart.html")
-
-# def add_to_cart(request, product_id):
-#     product = get_object_or_404(Product, id = product_id)
-
-#     prod_exist = 
->>>>>>> Stashed changes
+            response.write(result.getvalue())
+            return response
+        else:
+            return HttpResponse('Error generating PDF')
+    except Cart.DoesNotExist:
+        return HttpResponse('No cart found for this user')

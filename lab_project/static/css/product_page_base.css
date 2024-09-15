@@ -87,7 +87,6 @@ body {
     }
 }
 
-<<<<<<< Updated upstream
 .home-link {
     margin-top: 0;
 }
@@ -102,15 +101,6 @@ body {
 .home-link a:hover {
     background-color: rgba(128, 128, 128, 0.2);
     transition: all 0.2s;
-=======
-.menu-bar a {
-    padding: 5px;
-}
-
-.menu-bar a:hover {
-    background-color: var(--FONT-COLOR);
-    color: var(--BG-COLOR);
->>>>>>> Stashed changes
 }
 
 
@@ -278,7 +268,6 @@ main {
 }
 
 .product-price {
-<<<<<<< Updated upstream
     margin-top: 2rem;
     font-size: 2rem;
     margin-bottom: 1rem;
@@ -312,18 +301,10 @@ main {
     color: var(--BG-COLOR);
     cursor: pointer;
     text-decoration: none;
-=======
-    margin-top: 5rem;
-    font-size: 2rem;
-    margin-bottom: 4rem;
 }
 
-.cart-add-button {
-    padding: 0.5rem 2rem;
-    background-color: var(--FONT-COLOR);
-    color: var(--BG-COLOR);
-    cursor: pointer;
->>>>>>> Stashed changes
+.cart-add-link:hover {
+    background-color: rgba(0, 0, 0, 0.6);
 }
 
 .product-img img {
@@ -331,7 +312,6 @@ main {
     height: auto;
 }
 
-<<<<<<< Updated upstream
 .cart-add-msg {
     margin-top: 1rem;
     animation: removeMessage 2s 1s ease-in-out forwards;
@@ -349,8 +329,6 @@ main {
     }
 }
 
-=======
->>>>>>> Stashed changes
 .similar-block {
     padding-top: 3rem;
 }

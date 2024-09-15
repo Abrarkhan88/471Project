@@ -11,13 +11,10 @@ img {
     display: block;
 }
 
-<<<<<<< Updated upstream
 button {
     font-family: inherit;
 }
 
-=======
->>>>>>> Stashed changes
 
 /* VARIABLES */
 :root {
@@ -94,7 +91,6 @@ body {
     }
 }
 
-<<<<<<< Updated upstream
 .home-link {
     margin-top: 0;
 }
@@ -109,15 +105,6 @@ body {
 .home-link a:hover {
     background-color: rgba(128, 128, 128, 0.2);
     transition: all 0.2s;
-=======
-.menu-bar a {
-    padding: 5px;
-}
-
-.menu-bar a:hover {
-    background-color: var(--FONT-COLOR);
-    color: var(--BG-COLOR);
->>>>>>> Stashed changes
 }
 
 
@@ -263,7 +250,6 @@ body {
 }
 
 main {
-<<<<<<< Updated upstream
     padding: 3rem 3rem 5rem;
     display: flex;
     flex-direction: row;
@@ -274,6 +260,10 @@ main {
 
 .section {
     text-align: center;
+}
+
+.section a:hover {
+    background-color: rgba(0, 0, 0, 0.6);
 }
 
 .sec-header {
@@ -287,24 +277,12 @@ main {
     align-items: start;
     gap: 1rem;
     margin-top: 2rem;
-=======
-    padding: 5rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
->>>>>>> Stashed changes
 }
 
 .cart-dtl-container {
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
-<<<<<<< Updated upstream
     width: 35vw;
     height: auto;
-=======
-    width: 70vw;
-    padding: 2rem;
->>>>>>> Stashed changes
     text-align: center;
 }
 
@@ -312,7 +290,6 @@ main {
     padding-bottom: 2rem;
 }
 
-<<<<<<< Updated upstream
 .prod-container {
     display: flex;
     justify-content: center;
@@ -382,6 +359,7 @@ main {
     padding: 0 1rem;
 }
 
+
 .checkout-btn {
     background-color: var(--FONT-COLOR);
     color: var(--BG-COLOR);
@@ -389,6 +367,8 @@ main {
     font-size: 1rem;
     margin-top: 2rem;
 }
+
+
 
 .empty-container {
     width: 70vw;
@@ -403,14 +383,11 @@ main {
     margin-bottom: 2rem;
 }
 
-=======
->>>>>>> Stashed changes
 .shop-link {
     text-decoration: none;
     background-color: var(--FONT-COLOR);
     color: var(--BG-COLOR);
     padding: 0.5rem;
-<<<<<<< Updated upstream
 }
 
 footer {
@@ -433,6 +410,4 @@ footer {
     align-items: center;
     /* gap: 10rem; */
     padding: 2rem;
-=======
->>>>>>> Stashed changes
 }
