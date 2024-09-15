@@ -8,11 +8,40 @@
 
 <body>
 
-    {% block accountnav %}
-    
-    <div><a href = "account/login">Log in</a></div>
-    <div><a href = "account/signup">Create an account</a></div>
-    
+    {% block iconlinks %}
+
+    <div class = "icons">
+        <a href="#" title = "Search" class = "search-icon"><i class="fa-solid fa-magnifying-glass"></i></a>
+        
+        <div class = "user-icon">
+            <a href="#" class = "profile-icon" title = "Account"><i class="fas fa-user"></i></a>
+            <div class = "dropdown icon-dropdown">
+
+                {% if user.is_authenticated and not user.is_superuser %}
+                
+                <div><a href = "account/update_profile">My Profile</a></div>
+                <div><a href = "shopping_cart/view_cart">My Cart</a></div>
+                <div><a href = "account/logout">Log Out</a></div>
+                
+                
+
+                {% else %}
+
+                <div><a href = "account/login">Log in</a></div>
+                <div><a href = "account/signup">Create an account</a></div>
+
+                {% endif %}
+
+            </div>
+        </div>
+
+        {% if user.is_authenticated %}
+        <a href = "shopping_cart/view_cart" title = "My Cart"><i class="fa-solid fa-bag-shopping"></i></a>
+        {% else %}
+        <a href = "account/login" title = "My Cart"><i class="fa-solid fa-bag-shopping"></i></a>
+        {% endif %}
+    </div>
+
     {% endblock %}
     
     {% block content %}

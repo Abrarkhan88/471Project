@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Product, Cart, CartItem
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 
 # Create your views here.
 
@@ -16,7 +17,10 @@ def add_to_cart(request, product_id):
     cart_item.product_img = product.img
     cart_item.quantity += 1
     cart_item.price += product.price
+    cart.total_price += product.price
+
     cart_item.save()
+    cart.save()
 
     # return render(request, "cart.html")
 
@@ -28,7 +32,7 @@ def view_cart(request):
     cart = Cart.objects.get(user = user)
     cart_items = CartItem.objects.filter(cart = cart)
 
-    return render(request, 'cart.html', {"cart_items" : cart_items})
+    return render(request, 'cart.html', {"cart_items" : cart_items, "cart" : cart})
 
 # @login_required
 # def remove_from_cart(request, product_id):
