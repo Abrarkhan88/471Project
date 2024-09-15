@@ -27,7 +27,7 @@ def signup(request):
             if User.objects.filter(username = username).exists():
                 messages.info(request, "Username is already taken.")
                 return redirect('signup')
-            elif User.objects.filter(email = email).exists():
+            if User.objects.filter(email = email).exists():
                 messages.info(request, "Email is already taken.")
                 return redirect('signup')
             else:

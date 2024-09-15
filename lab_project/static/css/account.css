@@ -13,6 +13,27 @@ body {
     justify-content: center;
     min-height: 100vh;
     flex-grow: 1;
+    position: relative;
+    background-color: whitesmoke;
+}
+
+.home-link {
+    margin-top: 1.5rem;
+    position: absolute;
+    top: 0;
+    left: 1rem;
+}
+
+.home-link a {
+    color: #222;
+    font-size: 2rem;
+    border-radius: 50%;
+    padding: 1rem;
+}
+
+.home-link a:hover {
+    background-color: rgba(128, 128, 128, 0.2);
+    transition: all 0.2s;
 }
 
 main {

@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'account',
-    'ecomm.apps.EcommConfig'
+    'ecomm.apps.EcommConfig',
+    'shopping_cart'
 ]
 
 MIDDLEWARE = [
