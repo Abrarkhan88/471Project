@@ -4,7 +4,6 @@ from django.contrib.auth.models import User, auth
 from django.http import HttpResponse
 from django.contrib.auth import get_user_model, authenticate, login, logout
 from django.contrib import messages
-# from .backends import EmailBackend
 from .models import *
 import uuid
 from django.conf import settings
@@ -95,9 +94,7 @@ def password_reset(request):
     return render(request, "pass_reset.html")
 
 def my_profile(request):
-    pass
-
-
+    return render(request, 'user_profile.html')
 
 def updateProfile(request):
     if request.method == "POST":
@@ -106,7 +103,8 @@ def updateProfile(request):
         user.first_name = request.POST['first_name']
         user.last_name = request.POST['last_name']
         user.email = request.POST['email']
+        user.mobile_no = request.POST['mobile_no']
         user.save()
-        return redirect('/')
+        return redirect("my_profile")
     else:
         return render(request, "update_profile.html")

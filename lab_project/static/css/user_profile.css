@@ -11,7 +11,7 @@ img {
     display: block;
 }
 
-button {
+input, button {
     font-family: inherit;
 }
 
@@ -47,6 +47,7 @@ button {
 }
 
 
+/* INDEX START */
 body {
     font-family: var(--FF);
     min-height: 100vh;
@@ -107,7 +108,6 @@ body {
     transition: all 0.2s;
 }
 
-
 .category-nav {
     display: flex;
     justify-content: center;
@@ -163,7 +163,6 @@ body {
     display: grid;
     grid-template-columns: repeat(4, 250px);
     padding: var(--DROPDOWN-BOX-PADDING);
-    /* background-color: red; */
     column-gap: 1rem;
 }
 
@@ -174,7 +173,6 @@ body {
     align-items: start;
     gap: 2rem;
     border-right: 2px solid var(--FONT-COLOR);
-    /* background-color: rebeccapurple; */
 }
 
 .dropdown-grid:last-child {
@@ -241,7 +239,7 @@ body {
     background-color: var(--BG-COLOR);
     position: absolute;
     right: 3rem;
-    top: 2.3rem;
+    top: 2.2rem;
     width: 200px;
     padding: 0.5rem;
     box-shadow: 0px 0px 5px var(--FONT-COLOR);
@@ -261,146 +259,87 @@ body {
     color: var(--FONT-COLOR);
 }
 
-main {
-    padding: 3rem 3rem 5rem;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: start;
-    gap: 1rem;
-}
-
 .section {
     text-align: center;
-}
-
-.section a:hover {
-    background-color: rgba(0, 0, 0, 0.6);
+    padding-bottom: var(--SECTION-PADDING);
 }
 
 .sec-header {
+    padding: var(--HEADER-PADDING);
+}
+
+.sec-header h1 {
     border-bottom: var(--HEADER-BORDER);
     display: inline-block;
 }
 
-.cart-prod-price {
-    display: flex;
-    justify-content: center;
-    align-items: start;
-    gap: 1rem;
-    margin-top: 2rem;
-}
-
-.cart-dtl-container {
-    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
-    width: 35vw;
-    height: auto;
-    text-align: center;
-}
-
-.cart-dtl-container h4 {
-    padding-bottom: 2rem;
-}
-
-.prod-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 1rem;
-    gap: 2rem;
-    font-size: smaller;
-    border-bottom: 1px solid var(--FONT-COLOR);
-}
-
-.add-sub-form-div {
-    width: 1.2rem;
-    height: auto;
-}
-
-.add-sub-btn {
-    width: 100%;
-    height: auto;
-}
-
-.add-sub-btn:first-child {
-    margin-bottom: 6px;
-}
-
-
-
-.prod-container img {
-    width: 45px;
-    height: auto;
-}
-
-.prod-name-price {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-}
-
-.prod-name-size {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 15px;
-}
-
-.prod-size {
-    background-color: rgba(0, 0, 0, 0.1);
-    padding: 0 3px;
-}
-
-.price-container {
-    width: 25vw;
-    padding: 1.5rem;
-}
-
-.price-container h3 {
-    border-bottom: 1px solid var(--FONT-COLOR);
-    margin-bottom: 1rem;
-}
-
-.price-container h4 {
-    padding: 10px 0;
-}
-
-.calc {
+.user-creds-div {
+    margin: 0 5rem;
     text-align: left;
-    padding: 0 1rem;
+    border-top: 2px solid var(--FONT-COLOR);
 }
 
-
-.checkout-btn {
-    background-color: var(--FONT-COLOR);
-    color: var(--BG-COLOR);
-    padding: 0.5rem 1rem;
-    font-size: 1rem;
-    margin-top: 2rem;
+.sec-row {
+    display: flex;
+    justify-content: flex-start;
+    margin: 1rem 15rem;
+    padding: 1rem;
 }
 
-
-
-.empty-container {
-    width: 70vw;
-    height: 50vh;
-    place-content: center;
-    margin: 2rem 0;
-    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+.textfield-header {
+    font-weight: bolder;
 }
 
-.empty-container h4 {
-    font-size: 28px;
-    margin-bottom: 2rem;
+.textfield-sec {
+    padding: 0 2rem;
+    width: 50vw;
+    font-size: larger;
+    /* line-height: 2rem; */
 }
 
-.shop-link {
+.textfield-sec a {
     text-decoration: none;
+}
+
+.email, .uname, .mobile-no {
+    width: 50%;
+}
+
+.textfield-data {
+    /* border: 1px solid black; */
+    /* padding-left: 5px; */
+    width: 100%;
+    /* padding: 0.3rem; */
+    outline: none;
+    border: none;
+    background-color: var(--BG-COLOR);
+}
+
+.pass-link {
+    text-decoration: none;
+    color: var(--FONT-COLOR);
+    padding: 0.5rem;
+    display: inline-block;
+}
+
+.pass-link a:hover {
+    border-bottom: 1px solid var(--FONT-COLOR);
+    transition: all 0.3s;
+}
+
+.btns {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 3rem;
+}
+
+.update-btn, .back-btn {
     background-color: var(--FONT-COLOR);
     color: var(--BG-COLOR);
-    padding: 0.5rem;
+    padding: 0.3rem 0.5rem;
 }
+
 
 footer {
     background-color: var(--FONT-COLOR);
@@ -423,3 +362,4 @@ footer {
     /* gap: 10rem; */
     padding: 2rem;
 }
+/* INDEX END */

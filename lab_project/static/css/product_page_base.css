@@ -359,9 +359,26 @@ main {
 
 .reviews-block {
     padding: 1rem;
-    display: flex;
     gap: 2rem;
     font-size: 1.1rem;
+}
+
+.rev-indiv {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1rem;
+    /* border-bottom: 0.1px solid var(--FONT-COLOR); */
+    width: 70%;
+    padding: 1rem;
+}
+
+.reviews-block img {
+    border-radius: 50%;
+}
+
+.cust-name {
+    font-size: larger;
 }
 
 .cust-comment {
@@ -381,11 +398,17 @@ main {
     flex-direction: column;
     justify-content: flex-start;
     align-items: start;
+    gap: 2rem;
 }
 
-.textarea {
-    width: 50rem;
-    height: 10rem;
+.rev-textarea {
+    padding: 0.5rem 30rem 7rem 0.5rem;
+}
+
+.rev-submit {
+    background-color: var(--FONT-COLOR);
+    color: var(--BG-COLOR);
+    padding: 0.4rem 0.5rem;
 }
 
 .footer {
