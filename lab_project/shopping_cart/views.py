@@ -6,7 +6,6 @@ from django.http import HttpResponse
 from django.template.loader import render_to_string
 from io import BytesIO
 from xhtml2pdf import pisa
-from .models import Cart, CartItem
 
 # Create your views here.
 
@@ -77,38 +76,32 @@ def update_cart(request, item_id):
     return redirect('view_cart')
 
 def download_invoice(request):
-    try:
-        cart = Cart.objects.get(user=request.user)
-        cart_items = CartItem.objects.filter(cart=cart)
-        total_price = cart.total_price
+    cart = Cart.objects.get(user=request.user)
 
-        # Log the retrieved items and price for debugging
-        print("Cart Items:", cart_items)
-        print("Total Price:", total_price)
 
-        # Render the HTML for the invoice
-        html = render_to_string('invoice_template.html', {
-            'cart_items': cart_items,
-            'total_price': total_price,
-            'user': request.user,
-        })
+    cart_items = CartItem.objects.filter(cart=cart)
 
-        # Generate PDF from the HTML
-        response = HttpResponse(content_type='application/pdf')
-        response['Content-Disposition'] = 'attachment; filename="invoice.pdf"'
 
-        result = BytesIO()
-        pdf = pisa.pisaDocument(BytesIO(html.encode('UTF-8')), result)
+    total_price = cart.total_price
 
-        if not pdf.err:
-            # Clear the cart items after the invoice is generated
-            cart_items.delete()  
-            cart.total_price = 0
-            cart.save()
 
-            response.write(result.getvalue())
-            return response
-        else:
-            return HttpResponse('Error generating PDF')
-    except Cart.DoesNotExist:
-        return HttpResponse('No cart found for this user')
+    html = render_to_string('invoice_template.html', {
+        'cart_items': cart_items,
+        'total_price': total_price,
+        'user': request.user,
+    })
+
+
+    response = HttpResponse(content_type='application/pdf')
+    response['Content-Disposition'] = 'attachment; filename="invoice.pdf"'
+
+
+    result = BytesIO()
+    pdf = pisa.pisaDocument(BytesIO(html.encode('UTF-8')), result)
+
+
+    if not pdf.err:
+        response.write(result.getvalue())
+        return response
+    else:
+        return HttpResponse('Error generating PDF')

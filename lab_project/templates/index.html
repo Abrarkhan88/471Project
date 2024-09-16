@@ -11,7 +11,11 @@
     {% block iconlinks %}
 
     <div class = "icons">
-        <a href="#" title = "Search" class = "search-icon"><i class="fa-solid fa-magnifying-glass"></i></a>
+        <!-- <a href="#" title = "Search" class = "search-icon"><i class="fa-solid fa-magnifying-glass"></i></a> -->
+        
+        <div class = "search-bar">
+            <input type="text" id="search-input" placeholder="&#x1F50E;&#xFE0E;" class="search-bar">
+        </div>
         
         <div class = "user-icon">
             <a href="#" class = "profile-icon" title = "Account"><i class="fas fa-user"></i></a>
@@ -19,7 +23,8 @@
 
                 {% if user.is_authenticated and not user.is_superuser %}
                 
-                <div><a href = "account/update_profile">My Profile</a></div>
+                <!-- <div><a href = "account/update_profile">My Profile</a></div> -->
+                <div><a href = "account/my_profile">My Profile</a></div>
                 <div><a href = "shopping_cart/view_cart">My Cart</a></div>
                 <div><a href = "account/logout">Log Out</a></div>
                 

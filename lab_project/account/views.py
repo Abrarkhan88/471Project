@@ -95,9 +95,7 @@ def password_reset(request):
     return render(request, "pass_reset.html")
 
 def my_profile(request):
-    pass
-
-
+    return render(request, 'user_profile.html')
 
 def updateProfile(request):
     if request.method == "POST":

@@ -11,6 +11,10 @@ img {
     display: block;
 }
 
+input, button {
+    font-family: inherit;
+}
+
 
 /* VARIABLES */
 :root {
@@ -248,53 +252,9 @@ body {
     color: var(--FONT-COLOR);
 }
 
-
 .section {
     text-align: center;
     padding-bottom: var(--SECTION-PADDING);
-}
-
-.slideshow-container {
-    width: 100%;
-    height: auto;
-    /* overflow: hidden; */
-    background-color: var(--BG-COLOR);
-}
-
-.slide img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-/* Slideshow nav buttons */
-.prev, .next {
-    position: absolute;
-    top: 50%;
-    padding: 1rem;
-    font-size: 2rem;
-    color: var(--FONT-COLOR);
-    background-color: rgba(255, 255, 255, 0.5);
-    cursor: pointer;
-    user-select: none;
-    border: none;
-}
-
-.prev {
-    left: 10px;
-}
-
-.next {
-    right: 10px;
-}
-
-.prev:hover, .next:hover {
-    background-color: var(--FONT-COLOR);
-    color: var(--BG-COLOR);
-}
-
-.sec-products {
-    padding: 0 var(--PRODUCT-SEC-PADDING) var(--SECTION-PADDING);
 }
 
 .sec-header {
@@ -306,37 +266,67 @@ body {
     display: inline-block;
 }
 
-.products {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: var(--PRODUCT-GAP);
+.user-creds-div {
+    margin: 0 5rem;
+    text-align: left;
+    border-top: 2px solid var(--FONT-COLOR);
 }
 
-.products img {
+.sec-row {
+    display: flex;
+    justify-content: flex-start;
+    margin: 1rem 15rem;
+    padding: 1rem;
+}
+
+.textfield-header {
+    font-weight: bolder;
+}
+
+.textfield-sec {
+    padding: 0 2rem;
+    width: 50vw;
+    line-height: 2rem;
+}
+
+.textfield-sec a {
+    text-decoration: none;
+}
+
+.email, .uname, .mobile-no {
+    width: 50%;
+}
+
+.textfield-data {
+    border: 1px solid black;
+    padding-left: 5px;
     width: 100%;
-    height: 300px;
-    margin: auto;
+    padding: 0.3rem;
 }
 
-.product a:visited {
-    background-color: var(--FONT-COLOR);
-}
-
-.product a {
+.pass-link {
     text-decoration: none;
     color: var(--FONT-COLOR);
-}
-
-figcaption {
     padding: 0.5rem;
-    font-weight: bolder;
-    font-size: 1rem;
+    display: inline-block;
 }
 
+.pass-link a:hover {
+    border-bottom: 1px solid var(--FONT-COLOR);
+    transition: all 0.3s;
+}
 
-/* HOVER TRANSITION */
-.product:hover {
-    border-bottom: 2px solid var(--FONT-COLOR);
+.btns {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 3rem;
+}
+
+.update-btn, .back-btn {
+    background-color: var(--FONT-COLOR);
+    color: var(--BG-COLOR);
+    padding: 0.3rem 0.5rem;
 }
 
 
