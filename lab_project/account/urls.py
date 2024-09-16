@@ -1,5 +1,6 @@
 from django.urls import path
 from . import views
+from .views import password_reset,verify_OTP
 
 urlpatterns = [
     path('signup', views.signup, name = "signup"),
@@ -10,5 +11,7 @@ urlpatterns = [
     path('password_reset', views.password_reset, name = 'password_reset'),
     path('my_profile', views.my_profile, name = 'my_profile'), 
     path('update_profile', views.updateProfile, name = "update_profile"),
+    path('password_reset',views.password_reset,name="password_reset"),
+    path('verify_OTP/<int:id>',views.verify_OTP,name="verify_OTP"),
     # path('user=<int:user_id>', views.user_login, name = 'login')
 ]

@@ -1,6 +1,9 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from .manager import UserManager
+from django.contrib.auth.models import User
+from django.conf import settings
+
 
 # Create your models here.
 
@@ -14,5 +17,14 @@ class CustomUser(AbstractUser):
 
     object = UserManager()
 
-    # def __str__(self):
-    #     return self.user.username
+
+
+class profile(models.Model):
+
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    otp = models.CharField(max_length=6, blank=True)
+    created_date = models.DateTimeField(auto_now_add=True)
+
+    def _str__(self) -> str: 
+        return self.user
+

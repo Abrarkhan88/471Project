@@ -5,7 +5,7 @@ from django.contrib import messages
 from django.http import HttpResponse
 from django.template.loader import render_to_string
 from io import BytesIO
-from xhtml2pdf import pisa  
+#from xhtml2pdf import pisa  
 from .models import Cart
 
 # Create your views here.

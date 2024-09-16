@@ -6,7 +6,7 @@
 
 <main>
     <div class="container login-container">
-        <h2>Password Reset</h2>
+        <h2>Enter your registered email below.</h2>
         <form action="#" method="POST">
             {% csrf_token %}
             
@@ -22,7 +22,8 @@
             </div>
             {% endif %}
             
-            <button type="submit" class="btn">Next</button>
+            <button href="#" type="submit" class="btn">Submit</button>
+           {% comment %} <a href="{% url 'password_reset' %}"  class='forget-pwd'>Forgot Password?</a> {% endcomment %}
         </form>
 
         <div class = "password-prompt">
