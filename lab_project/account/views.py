@@ -1,5 +1,4 @@
 from django.shortcuts import render, redirect
-from django.contrib import messages
 from django.contrib.auth.models import User, auth
 from django.http import HttpResponse
 
@@ -105,6 +104,7 @@ def verify(request, verf_link):
 
 
 def password_reset(request):
+<<<<<<< HEAD
     if request.method == 'POST':
         email = request.POST['email']
         OTP_token = random.randint(111111, 999999)
@@ -123,6 +123,9 @@ def password_reset(request):
         except User.DoesNotExist:
             messages.warning(request, "Invalid email.")
     return render(request, "pass_reset.html")
+=======
+    return render(request, "resetPassword/passresetmail.html")
+>>>>>>> 511e21415ebfe7a1b08d70a09452f2bb53d043ab
 
 
 
@@ -214,6 +217,7 @@ def verify_OTP(request, id):
 
 def my_profile(request):
     pass
+<<<<<<< HEAD
 
 
 
@@ -228,3 +232,5 @@ def updateProfile(request):
         return redirect('/')
     else:
         return render(request, "update_profile.html")
+=======
+>>>>>>> 511e21415ebfe7a1b08d70a09452f2bb53d043ab

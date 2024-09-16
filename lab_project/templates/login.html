@@ -28,12 +28,22 @@
             <button type="submit" class="btn">Login</button>
         </form>
 
+<<<<<<< HEAD
         <div class = "password-prompt">
             <a href="{% url 'password_reset' %}"  class='forget-pwd'>Forgot Password?</a>
         </div>
+=======
+        {% comment %} <div class = "password-prompt">
+            <a href="password_reset">Forgot Password?</a>
+        </div> {% endcomment %}
+>>>>>>> 511e21415ebfe7a1b08d70a09452f2bb53d043ab
 
         <div class = "signup-prompt">
             <p>Don't have an account? <a href = "signup">Sign up</a></p>
+        </div>
+        <div >
+            <p>Forgot your password? <a href = "password_reset">password_reset</a></p>
+            <a herf="{% url 'password_reset' %}">forgot password?</a>
         </div>
     </div>
 </main>
