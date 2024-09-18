@@ -6,4 +6,6 @@ urlpatterns = [
     path('view_cart', views.view_cart, name = "view_cart"),
     path('update_cart/<int:item_id>', views.update_cart, name = "update_cart"),
     path('download_invoice/', views.download_invoice, name='download_invoice'),
+    path('purchase_completed/', views.purchase_completed, name='purchase_completed'),
+    path('download_invoice_file/', views.download_invoice_file, name='download_invoice_file'),
 ]
