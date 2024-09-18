@@ -4,11 +4,11 @@ from django.contrib.auth.models import User, auth
 from django.http import HttpResponse
 from django.contrib.auth import get_user_model, authenticate, login, logout
 from django.contrib import messages
-# from .backends import EmailBackend
 from .models import *
 import uuid
 from django.conf import settings
 from django.core.mail import send_mail
+from lab_project.settings import EMAIL_HOST_USER
 
 User = get_user_model()
 
@@ -53,6 +53,12 @@ def user_login(request):
         user = authenticate(email = email, password = password)
 
         if user is not None:
+            if user.email_verified == False:
+                if not user.is_superuser:
+                    messages.info(request, "Your email is not verified. Please verify your email before logging in")
+                    
+                    return redirect("login")
+            
             login(request, user)
             return redirect('/')
         else:
@@ -91,8 +97,7 @@ def verify(request, verf_link):
     else:
         return render(request, "verf_error.html")
 
-def password_reset(request):
-    return render(request, "pass_reset.html")
+
 
 def my_profile(request):
     return render(request, 'user_profile.html')
@@ -104,7 +109,56 @@ def updateProfile(request):
         user.first_name = request.POST['first_name']
         user.last_name = request.POST['last_name']
         user.email = request.POST['email']
+        user.mobile_no = request.POST['mobile_no']
         user.save()
-        return redirect('/')
+        return redirect("my_profile")
     else:
         return render(request, "update_profile.html")
+
+
+
+
+
+
+
+
+def forget_password(request):
+    if request.method == "POST":
+        email = request.POST.get("email")
+        if User.objects.filter(email=email).exists():
+            user = User.objects.get(email=email)
+            verf_link = str(uuid.uuid4())
+            user.verf_link = verf_link  # Assuming you have a field for the verification link
+            user.save()
+            send_mail(
+                'Reset your password:',
+                f"Hello {user.username}! Click on the link to reset your password:\n http://127.0.0.1:8000/account/verifipassword/{verf_link}/",
+                EMAIL_HOST_USER,
+                [email],
+                fail_silently=True
+            )
+            messages.success(request, "An email has been sent to your email.")
+            return render(request, 'pass_reset.html')
+        else:
+            messages.warning(request, 'Account does not exist with this email. Please signup.')
+            return render(request, 'signup.html')
+    return render(request, 'pass_reset.html')
+
+def verifipassword(request, verf_link):
+    user = User.objects.filter(verf_link=verf_link).first()
+    if user is None:
+        messages.error(request, 'Invalid verification link.')
+        return render(request, 'verifypassword.html')
+
+    if request.method == 'POST':
+        pass1 = request.POST.get('password1')
+        pass2 = request.POST.get('password2')
+        if pass1 == pass2:
+            user.set_password(pass1)
+            user.verf_link = ''  # Clear the verification link after use
+            user.save()
+            return HttpResponse('Password reset successful')
+        else:
+            messages.error(request, 'Passwords do not match.')
+    
+    return render(request, 'verifypassword.html')

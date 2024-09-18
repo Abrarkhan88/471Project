@@ -205,6 +205,15 @@ body {
     outline: none;
     padding: 5px 10px;
     background-color: var(--BG-COLOR);
+    width: 12rem;
+    position: absolute;
+    top: 6px;
+    right: 6rem;
+}
+
+.search-bar ::placeholder {
+    color: var(--FONT-COLOR);
+    font-size: larger;
 }
 
 .icon-dropdown {
@@ -266,7 +275,8 @@ body {
 .textfield-sec {
     padding: 0 2rem;
     width: 50vw;
-    line-height: 2rem;
+    font-size: larger;
+    /* line-height: 2rem; */
 }
 
 .textfield-sec a {

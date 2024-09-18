@@ -1,14 +1,103 @@
 <!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    
+    <title>Invoice</title>
+
+    <!-- <link rel="stylesheet" href="{% static 'css/invoice.css'}"> -->
+
+    <style>
+        body {
+            font-family: "VT323", monospace;
+            text-align: center;
+            font-size: 1.5rem;
+        }
+
+        table {
+            border-collapse: collapse;
+            margin-bottom: 3rem;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 0.5rem;
+            width: 25%;
+        }
+
+        th {
+            background-color: rgba(204, 201, 201, 0.263);
+        }
+
+        .right-align {
+            text-align: right;
+        }
+
+        sub {
+            font-size: .67em;
+        }
+    </style>
+</head>
+
+<body>
+    <div class = "not-footer">
+        <div class = "pg-header">
+            <h1>Invoice</h1>
+            <h2>SoloHustle <sub>by Abrar and Fahmid</sub></h2>
+            <h3>Order Summary</h3>
+            <h4>Customer Name: {{ user.first_name }} {{ user.last_name }}</h4>
+        </div>
+
+        <div class = "inv-dtls">
+            <table class = "inv-dtl-table">
+                <thead class = "table-header">
+                    <tr class = "header-row">
+                        <th>Product</th>
+                        <th>Size</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in cart_items %}
+                    <tr>
+                        <td>{{ item.product_name }}</td>
+                        <td>{{ item.product_size }}</td>
+                        <td>{{ item.quantity }}</td>
+                        <td>BDT {{ item.price }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <div class = "total-price">
+            <h3 class = "right-align">Total Price: {{ total_price }}</h3>
+        </div>
+    </div>
+
+    <footer>
+        <h3>Thank you for ordering!</h3>
+    </footer>
+</body>
+</html>
+
+
+
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Invoice</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: "VT323", monospace;
+            font-size: 1.5rem;
         }
 
-        h1, h3 {
+        h1, h2, h3 {
             text-align: center;
         }
 
@@ -16,6 +105,7 @@
             width: 100%;
             border-collapse: collapse;
             margin: 20px 0;
+            font-size: 1rem;
         }
 
         table, th, td {
@@ -46,8 +136,9 @@
     </style>
 </head>
 <body>
-    <h1>Invoice for {{ user.username }}</h1>
-    <h3>Order Summary:</h3>
+    <h1>Invoice</h1>
+    <h2>Order Summary</h2>
+    <h3>Customer Name: {{ user.username }}</h3>
     
     <table>
         <thead>
@@ -64,12 +155,10 @@
                 <td class="center-align">{{ item.quantity }}</td>
                 <td class="right-align">{{ item.price }}</td>
             </tr>
-            {% empty %}
-            <tr><td colspan="3">No items in your cart</td></tr>
             {% endfor %}
         </tbody>
     </table>
     
     <h3 class="right-align">Total Price: BDT {{ total_price }}</h3>
 </body>
-</html>
+</html> -->

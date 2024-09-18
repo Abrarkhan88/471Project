@@ -18,7 +18,7 @@ def add_to_cart(request, product_id):
     product = get_object_or_404(Product, id = product_id)
     user = request.user
 
-    size = request.POST['size']
+    size = request.POST.get('size', "")
 
     cart, created = Cart.objects.get_or_create(user = user)
     cart_item, created = CartItem.objects.get_or_create(cart = cart, product = product, product_size = size)
@@ -38,11 +38,14 @@ def add_to_cart(request, product_id):
 
     return redirect("product_detail", product_id = product_id)
 
-@login_required
+# @login_required
 def view_cart(request):
     user = request.user
     cart, created = Cart.objects.get_or_create(user = user)
     cart_items = CartItem.objects.filter(cart = cart)
+
+    if not cart_items:
+        messages.info(request, "Your cart is currently empty")
 
     return render(request, 'cart.html', {"cart_items" : cart_items, "cart" : cart})
 
@@ -80,9 +83,6 @@ def update_cart(request, item_id):
     return redirect('view_cart')
 
 
-
-
-
 def download_invoice(request):
     try:
         cart = Cart.objects.get(user=request.user)
@@ -117,11 +117,8 @@ def download_invoice(request):
             return HttpResponse('Error generating PDF')
     except Cart.DoesNotExist:
         return HttpResponse('No cart found for this user')
-    
-
 
 def purchase_completed(request):
-   
     return render(request, 'purchase_completed.html')
 
 def download_invoice_file(request):

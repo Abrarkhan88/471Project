@@ -59,8 +59,6 @@ body {
     padding: 0 0.5rem;
     box-shadow: var(--NAVBAR-SHADOW);
     height: var(--NAVBAR-HEIGHT);
-    animation: showNavbar 1s ease-in-out forwards;
-    transform-origin: top center;
     background-color: var(--BG-COLOR);
     position: relative;
 }
@@ -69,22 +67,6 @@ body {
     text-decoration: none;
     color: var(--FONT-COLOR);
     font-weight: bold;
-}
-
-
-/* NAVBAR ANIMATION */
-@keyframes showNavbar {
-    0% {
-        transform: scaleY(0);
-    }
-
-    50% {
-        transform: scaleY(1.2);
-    }
-
-    100% {
-        transform: scaleY(1);
-    }
 }
 
 .home-link {
@@ -170,7 +152,6 @@ body {
     align-items: start;
     gap: 2rem;
     border-right: 2px solid var(--FONT-COLOR);
-    /* background-color: rebeccapurple; */
 }
 
 .dropdown-grid:last-child {
@@ -212,9 +193,24 @@ body {
 }
 
 .icons a:hover {
-    /* background-color: var(--FONT-COLOR);
-    color: var(--BG-COLOR); */
     border-bottom: 1px solid var(--FONT-COLOR);
+}
+
+.search-bar input {
+    border: none;
+    border-bottom: 1px solid var(--FONT-COLOR);
+    outline: none;
+    padding: 5px 10px;
+    background-color: var(--BG-COLOR);
+    width: 12rem;
+    position: absolute;
+    top: 6px;
+    right: 6rem;
+}
+
+.search-bar ::placeholder {
+    color: var(--FONT-COLOR);
+    font-size: larger;
 }
 
 .icon-dropdown {
@@ -230,9 +226,6 @@ body {
 
 .user-icon:hover .icon-dropdown {
     display: block;
-    /* flex-direction: column;
-    justify-content: center;
-    align-items: start; */
 }
 
 .icon-dropdown div {
@@ -398,11 +391,17 @@ main {
     flex-direction: column;
     justify-content: flex-start;
     align-items: start;
+    gap: 2rem;
 }
 
-.textarea {
-    width: 50rem;
-    height: 10rem;
+.rev-textarea {
+    padding: 0.5rem 30rem 7rem 0.5rem;
+}
+
+.rev-submit {
+    background-color: var(--FONT-COLOR);
+    color: var(--BG-COLOR);
+    padding: 0.4rem 0.5rem;
 }
 
 .footer {

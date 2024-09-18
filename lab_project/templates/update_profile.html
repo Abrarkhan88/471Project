@@ -61,31 +61,31 @@
                     <div class = "sec-row">
                         <div class = "textfield-sec f-name">
                             <label for = "first_name" class = "textfield-header">First Name</label>
-                            <input type = "text" class = "textfield-data" value = "{{ request.user.first_name }}" name = "first_name">
+                            <input type = "text" id = "first_name" class = "textfield-data" value = "{{ request.user.first_name }}" name = "first_name">
                         </div>
                         
                         <div class = "textfield-sec l-name">
                             <label for = "last_name" class = "textfield-header">Last Name</label>
-                            <input type = "text" class = "textfield-data" value = "{{ request.user.last_name }}" name = "last_name">
+                            <input type = "text" id = "last_name" class = "textfield-data" value = "{{ request.user.last_name }}" name = "last_name">
                         </div>
                     </div>
     
                     <div class = "sec-row">
                         <div class = "textfield-sec email">
                             <label for = "email" class = "textfield-header">Email Address</label>
-                            <input type = "text" class = "textfield-data" value = "{{ request.user.email }}" name = "email">
+                            <input type = "text" id = "email" class = "textfield-data" value = "{{ request.user.email }}" name = "email">
                         </div>
                     </div>
                     
                     <div class = "sec-row">
                         <div class = "textfield-sec uname">
                             <label for = "username" class = "textfield-header">Username</label>
-                            <input type = "text" class = "textfield-data" value = "{{ request.user.username }}" name = "username">
+                            <input type = "text" id = "username" class = "textfield-data" value = "{{ request.user.username }}" name = "username">
                         </div>
     
                         <div class = "textfield-sec mobile-no">
                             <label for = "mobile_no" class = "textfield-header">Mobile No.</label>
-                            <input type = "text" class = "textfield-data" value = "{{ request.user.mobile_no }}" name = "mobile_no">
+                            <input type = "text" id = "mobile_no" class = "textfield-data" value = "{{ request.user.mobile_no }}" name = "mobile_no">
                         </div>
                     </div>
                     
@@ -107,6 +107,7 @@
 </main>
 
 {% endblock %}
+
 
 <!-- {% load static %}
 
@@ -146,8 +147,8 @@
                 <input type="email" id="email" name="email" value="{{ request.user.email }}" required>
             </div>
             <div class="form-group">
-                <label for="email">Phone:</label>
-                <input type="text" id="email" name="email" value="{{ request.user.mobile_no }}" required>
+                <label for="mobile_no">Phone:</label>
+                <input type="text" id="mobile_no" name="mobile_no" value="{{ request.user.mobile_no }}" required>
             </div>
 
             <button type="submit">Update Profile</button>
@@ -157,6 +158,3 @@
     </div>
 </body>
 </html> -->
-
-
-
