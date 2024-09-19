@@ -18,8 +18,18 @@ def product_detail(request, product_id):
     products = Product.objects.filter(type = product.type)
     rev = Reviews.objects.filter(product = product)
     user = request.user
+
+    if product.type == "Shoes":
+        sizes = ["40", "41", "42", "43"]
+
+        if product.category == "Boys" or product.category == "Girls":
+            sizes = ["32", "33", "34", "35"]
+    else:
+        sizes = ["S", "M", "L", "XL"]
     
-    return render(request, "product_detail.html", {"product": product, "products": products, "rev" : rev, "user" : user})
+    context = {"product": product, "products": products, "rev" : rev, "user" : user, "sizes" : sizes}
+    
+    return render(request, "product_detail.html", context)
 
 
 
@@ -43,9 +53,22 @@ def reviews(request, product_id):
     return render(request, "product_detail.html", {"rev" : rev, "product" : product})
 
 
-def products_by_type(request, type):
+def products_by_type(request, type, category):
     type = type.replace('-', ' ')
-    print(type)
-    products = Product.objects.filter(type=type) 
-    print(products)
-    return render(request, 'products_by_type.html', {'products': products, 'type': type})
+    category = category.replace('-', ' ')
+
+    products = Product.objects.filter(type = type, category = category) 
+
+    return render(request, 'products_by_type.html', {'products': products, 'type': type, 'category': category})
+
+
+def products_by_type(request, type, category, name=None):
+    type = type.replace('-', ' ')
+    category = category.replace('-', ' ')
+
+    products = Product.objects.filter(type=type, category=category)
+
+    if name:
+        products = products.filter(name__icontains=name)
+
+    return render(request, 'products_by_type.html', {'products': products, 'type': type, 'category': category})

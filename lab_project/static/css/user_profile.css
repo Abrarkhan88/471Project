@@ -64,8 +64,6 @@ body {
     padding: 0 0.5rem;
     box-shadow: var(--NAVBAR-SHADOW);
     height: var(--NAVBAR-HEIGHT);
-    animation: showNavbar 1s ease-in-out forwards;
-    transform-origin: top center;
     background-color: var(--BG-COLOR);
     position: relative;
 }
@@ -74,22 +72,6 @@ body {
     text-decoration: none;
     color: var(--FONT-COLOR);
     font-weight: bold;
-}
-
-
-/* NAVBAR ANIMATION */
-@keyframes showNavbar {
-    0% {
-        transform: scaleY(0);
-    }
-
-    50% {
-        transform: scaleY(1.2);
-    }
-
-    100% {
-        transform: scaleY(1);
-    }
 }
 
 .home-link {

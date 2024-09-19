@@ -24,6 +24,7 @@
         th, td {
             border: 1px solid black;
             padding: 0.5rem;
+            width: 25%;
         }
 
         th {
@@ -42,7 +43,7 @@
             <h1>Invoice</h1>
             <h2>Online Clothing Brand</h2>
             <h3>Order Summary</h3>
-            <h4>Customer Name: {{ user.username }}</h4>
+            <h4>Customer Name: {{ user.first_name }} {{ user.last_name }}</h4>
         </div>
 
         <div class = "inv-dtls">
@@ -50,6 +51,7 @@
                 <thead class = "table-header">
                     <tr class = "header-row">
                         <th>Product</th>
+                        <th>Size</th>
                         <th>Quantity</th>
                         <th>Price</th>
                     </tr>
@@ -58,6 +60,7 @@
                     {% for item in cart_items %}
                     <tr>
                         <td>{{ item.product_name }}</td>
+                        <td>{{ item.product_size }}</td>
                         <td>{{ item.quantity }}</td>
                         <td>BDT {{ item.price }}</td>
                     </tr>
